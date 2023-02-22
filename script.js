@@ -1,47 +1,54 @@
-let userName = prompt('Имя');
-let userSurname = prompt('Фамилия');
-let userBirthDay = +prompt('День рождения');
-let userBirthMonths = +prompt('Месяц рождения');
-let userBirthYear = +prompt('Год рождения');
-let currentYear = 2022;
-let userAge = currentYear - userBirthYear;
-document.write(`User Bio: ${userName} ${userSurname} ${userAge} Years old`);
-if (userBirthYear % 4 == 0 || userBirthYear % 400 == 0) {
-    document.write(' (leap year)')
+let userEmail = '';
+let userPassword = '';
+let tries = 3;
+let error = '';
+let success = false;
+do {
+    error = ''
+    tries = tries - 1
+    if (tries === 2) {
+        alert('У вас 3 попытки!')
+    }
+    if (tries === 1) {
+        alert('У вас еше 2 попытки!!')
+    }
+    if (tries === 0) {
+        alert('У вас еше 1 попытка!!!')
+    }
+    userEmail = prompt('Введите ваш email')
+    userPassword = prompt('Введите ваш пароль')
+    if (userEmail.startsWith('@') || userEmail.startsWith(' ')) {
+        error = error + 'email не должен начинаться с "@" и пробела\n'
+    }
+    if (userEmail.endsWith('@') || userEmail.endsWith(' ')) {
+        error = error + 'email не должен заканчиваться с "@" и пробела\n'
+    }
+    if (userEmail.length > 15) {
+        error = error + 'email не должен быть больше 15 символов\n'
+    }
+    if (!userEmail.match(/[@]/g)) {
+        error = error + 'email должен включать в себя "@"\n'
+    }
+    if (!userEmail.endsWith('.com')) {
+        error = error + 'email должен заканчиваться на ".com"\n'
+    }
+    if (userEmail.match(/[A-Z]/g)) {
+        error = error + 'пароль должен включать как минимум 1 заглавную букву\n'
+    }
+    if (userPassword.length < 4 || userPassword.length > 12) {
+        error = error + 'пароль должен быть не меньше 4 и не больше 12 символов\n'
+    }
+    if (error == '') {
+        success = true
+    }
+    if (error !== '') {
+        alert(error)
+    }
+    if (tries === 0) {
+        alert(`Нет больше попыток! \n${error}`)
+    }
 }
-if (userBirthMonths == 1 && userBirthDay >= 20 || userBirthMonths == 2 && userBirthDay <= 18) {
-    document.write(' Aquarius♒')
-}
-if (userBirthMonths == 2 && userBirthDay >= 19 || userBirthMonths == 3 && userBirthDay <= 20) {
-    document.write(' Pisces♓')
-}
-if (userBirthMonths == 3 && userBirthDay >= 21 || userBirthMonths == 4 && userBirthDay <= 19) {
-    document.write(' Aries♈')
-}
-if (userBirthMonths == 4 && userBirthDay >= 20 || userBirthMonths == 5 && userBirthDay <= 20) {
-    document.write(' Taurus♉')
-}
-if (userBirthMonths == 5 && userBirthDay >= 21 || userBirthMonths == 6 && userBirthDay <= 20) {
-    document.write(' Gemini♊')
-}
-if (userBirthMonths == 6 && userBirthDay >= 21 || userBirthMonths == 7 && userBirthDay <= 22) {
-    document.write(' Cancer♋')
-}
-if (userBirthMonths == 7 && userBirthDay >= 23 || userBirthMonths == 8 && userBirthDay <= 22) {
-    document.write(' Leo♌')
-}
-if (userBirthMonths == 8 && userBirthDay >= 23 || userBirthMonths == 9 && userBirthDay <= 22) {
-    document.write(' Virgo♍')
-}
-if (userBirthMonths == 9 && userBirthDay >= 23 || userBirthMonths == 10 && userBirthDay <= 22) {
-    document.write(' Libra♎')
-}
-if (userBirthMonths == 10 && userBirthDay >= 23 || userBirthMonths == 11 && userBirthDay <= 21) {
-    document.write(' Scorpio♏')
-}
-if (userBirthMonths == 11 && userBirthDay >= 22 || userBirthMonths == 12 && userBirthDay <= 21) {
-    document.write(' Sagittarius♐')
-}
-if (userBirthMonths == 12 && userBirthDay >= 22 || userBirthMonths == 1 && userBirthDay <= 19) {
-    document.write(' Capricorn♑')
+while (tries && error !== '')
+if (success = true) {
+    document.write(`Your account successfully registed! Email: ${userEmail} Password: ${userPassword}`)
 }
