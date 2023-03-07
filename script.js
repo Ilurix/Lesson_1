@@ -1,42 +1,14 @@
-let userEmail = '';
-let userPassword = '';
-let tries = 3;
+let arr = [];
+let value = '';
 let error = '';
-let success = false;
+let sum = 0;
 do {
     error = ''
-    tries = tries - 1
-    if (tries === 2) {
-        alert('У вас 3 попытки!')
-    }
-    if (tries === 1) {
-        alert('У вас еше 2 попытки!!')
-    }
-    if (tries === 0) {
-        alert('У вас еше 1 попытка!!!')
-    }
-    userEmail = prompt('Введите ваш email')
-    userPassword = prompt('Введите ваш пароль')
-    if (userEmail.startsWith('@') || userEmail.startsWith(' ')) {
-        error = error + 'email не должен начинаться с "@" и пробела\n'
-    }
-    if (userEmail.endsWith('@') || userEmail.endsWith(' ')) {
-        error = error + 'email не должен заканчиваться с "@" и пробела\n'
-    }
-    if (userEmail.length > 15) {
-        error = error + 'email не должен быть больше 15 символов\n'
-    }
-    if (!userEmail.match(/[@]/g)) {
-        error = error + 'email должен включать в себя "@"\n'
-    }
-    if (!userEmail.endsWith('.com')) {
-        error = error + 'email должен заканчиваться на ".com"\n'
-    }
-    if (userEmail.match(/[A-Z]/g)) {
-        error = error + 'пароль должен включать как минимум 1 заглавную букву\n'
-    }
-    if (userPassword.length < 4 || userPassword.length > 12) {
-        error = error + 'пароль должен быть не меньше 4 и не больше 12 символов\n'
+    value = +prompt(`знач`)
+    Math.abs(value)
+    Math.round(value)
+    if (value < 2 || value > 10) {
+        error = error + 'число должно быть не меньше 2 и не больше 10\n'
     }
     if (error == '') {
         success = true
@@ -44,11 +16,20 @@ do {
     if (error !== '') {
         alert(error)
     }
-    if (tries === 0) {
-        alert(`Нет больше попыток! \n${error}`)
-    }
 }
-while (tries && error !== '')
+
+while (error !== '')
 if (success = true) {
-    document.write(`Your account successfully registed! Email: ${userEmail} Password: ${userPassword}`)
+    while (arr.length != value)
+        arr.push(Math.round(Math.random() * 10))
 }
+for (let i of arr) {
+    document.write(i + '-');
+    console.log(i);
+}
+
+for (let el of arr) {
+    sum = sum + el
+}
+document.write(sum);
+console.log(sum);
